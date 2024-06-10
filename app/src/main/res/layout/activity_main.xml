@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ADD8E6"
     tools:context=".MainActivity">
 
     <EditText
@@ -38,6 +39,7 @@
         android:layout_marginStart="39dp"
         android:layout_marginTop="41dp"
         android:text="Sign in"
+        android:textColor="@android:color/holo_orange_light"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
 
@@ -48,6 +50,7 @@
         android:layout_marginStart="69dp"
         android:layout_marginTop="42dp"
         android:text="Cancel"
+        android:textColor="@color/mycolor"
         app:layout_constraintStart_toEndOf="@+id/button"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
 </androidx.constraintlayout.widget.ConstraintLayout>
