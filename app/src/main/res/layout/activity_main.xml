@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginTop="40dp"
-        android:text="Cancel"
+        android:text="Dail"
         android:onClick="Mybutton"
         android:textColor="@color/mycolor"
         app:layout_constraintStart_toEndOf="@+id/button"
