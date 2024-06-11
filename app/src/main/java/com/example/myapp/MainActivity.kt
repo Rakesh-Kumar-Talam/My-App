@@ -28,4 +28,9 @@ class MainActivity : AppCompatActivity() {
         var dail:Intent = Intent(Intent.ACTION_DIAL,Uri.parse("tel:7981036722"))
         startActivity(dail)
     }
+
+    fun Website(view: View) {
+        var web:Intent = Intent(Intent.ACTION_VIEW,Uri.parse("http://www.google.com"))
+        startActivity(web)
+    }
 }
