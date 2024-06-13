@@ -1,5 +1,6 @@
 package com.example.myapp.kotlinexamples
 
+
 fun main() {
     //strings example
     /*val numberOfFish = 5
@@ -28,11 +29,20 @@ fun main() {
     println(fishFoodTreats1)*/
 
     //list
-    val school = listOf("mackerel", "trout", "halibut")
+    /*val school = listOf("mackerel", "trout", "halibut")
     println(school)
 
     //mutablelist
     val myList = mutableListOf("tuna", "salmon", "shark")
-    println(myList.remove("shark"))
+    println(myList.remove("shark"))*/
 
+    //array
+    val school = arrayOf("shark", "salmon", "minnow")
+    println(java.util.Arrays.toString(school))
+    //concatinating arrays
+    val numbers = intArrayOf(1,2,3)
+    val numbers3 = intArrayOf(4,5,6)
+    val foo2 = numbers3 + numbers
+    println(foo2[0])
+    println(foo2[5])
 }
