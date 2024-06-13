@@ -16,7 +16,8 @@ fun main() {
         println("That's a lot of fish!")
     }*/
 
-    var fishFoodTreats = 6
+    //nullability
+    /*var fishFoodTreats = 6
     if (fishFoodTreats != null) {
         fishFoodTreats = fishFoodTreats.dec()
     }
@@ -24,8 +25,14 @@ fun main() {
 
     var fishFoodTreats1 = 10
     fishFoodTreats1 = fishFoodTreats1?.dec() ?: 0
-    println(fishFoodTreats1)
+    println(fishFoodTreats1)*/
 
+    //list
+    val school = listOf("mackerel", "trout", "halibut")
+    println(school)
 
+    //mutablelist
+    val myList = mutableListOf("tuna", "salmon", "shark")
+    println(myList.remove("shark"))
 
 }
