@@ -33,4 +33,9 @@ class MainActivity : AppCompatActivity() {
         var web:Intent = Intent(Intent.ACTION_VIEW,Uri.parse("http://www.google.com"))
         startActivity(web)
     }
+
+    fun Activity_Example(view: View) {
+        var hIntent:Intent = Intent(this,HomeActivity::class.java)
+        startActivity(hIntent)
+    }
 }
