@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
 
     fun Activity_Example(view: View) {
         var hIntent:Intent = Intent(this,HomeActivity::class.java)
+        hIntent.putExtra("mykey","refer my app2 - rakesh")
         startActivity(hIntent)
     }
 }
