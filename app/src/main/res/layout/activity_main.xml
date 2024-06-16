@@ -90,9 +90,10 @@
 
     <Button
         android:id="@+id/button5"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="37dp"
+        android:layout_width="169dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="32dp"
         android:onClick="Activity_Example"
         android:text="Activity_Example"
         app:layout_constraintStart_toEndOf="@+id/button4"
