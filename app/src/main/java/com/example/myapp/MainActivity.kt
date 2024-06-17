@@ -11,6 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
+    var TAG="MyActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -20,6 +21,32 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        Log.i(TAG, "activity created")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.i(TAG, "activity started")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i(TAG, "activity resumed")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.i(TAG, "activity paused")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.i(TAG, "activity stopped")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i(TAG, "activity destroyed")
     }
 
     fun Mybutton(view: View) {

@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.myapp.R.id.activity_ex
 
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,10 +20,10 @@ class HomeActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-       /* var data = intent.extras?.getString("mykey")
+        /*var data = intent.extras?.getString("mykey")
+        Log.i("HomeActivity","data is " +data)
         //Log.i("homeactivity",data)
-        //Log.i("homeactivity",data)
-        var homeTextView:TextView = findViewById(R.id.button5)
-        homeTextView.setText(data)*/
+        var homeTextView:TextView = findViewById(activity_ex)
+        //homeTextView.setText("data")*/
     }
 }
