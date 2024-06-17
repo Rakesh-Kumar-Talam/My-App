@@ -20,10 +20,10 @@ class HomeActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        /*var data = intent.extras?.getString("mykey")
+        var data = intent.extras?.getString("mykey")
         Log.i("HomeActivity","data is " +data)
         //Log.i("homeactivity",data)
         var homeTextView:TextView = findViewById(activity_ex)
-        //homeTextView.setText("data")*/
+        //homeTextView.setText("data")
     }
 }
