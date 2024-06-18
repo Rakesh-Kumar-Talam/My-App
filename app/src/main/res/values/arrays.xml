@@ -8,4 +8,13 @@
         <item>Nepal</item>
         <item>Germany</item>
     </string-array>
+
+    <string-array name="Languages">
+        <item>Telugu</item>
+        <item>Hindi</item>
+        <item>English</item>
+        <item>Tamil</item>
+        <item>Japanese</item>
+        <item>German</item>
+    </string-array>
 </resources>
