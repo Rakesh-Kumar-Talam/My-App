@@ -11,8 +11,42 @@
         android:id="@+id/tvhome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
         android:text="Home"
-        android:textSize="120dp"
-        tools:layout_editor_absoluteX="52dp"
-        tools:layout_editor_absoluteY="81dp" />
+        android:textSize="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/edui"
+        app:layout_constraintStart_toStartOf="@+id/edui" />
+
+    <EditText
+        android:id="@+id/edui"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginBottom="36dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="enter text"
+        app:layout_constraintBottom_toTopOf="@+id/btnui"
+        app:layout_constraintStart_toStartOf="@+id/btnui" />
+
+    <Button
+        android:id="@+id/btnui"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="240dp"
+        android:onClick="getShowText"
+        android:text="get text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvui"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="36dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/btnui"
+        app:layout_constraintTop_toBottomOf="@+id/btnui" />
 </androidx.constraintlayout.widget.ConstraintLayout>
