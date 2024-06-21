@@ -1,6 +1,5 @@
 package network
 
-package com.example.vitbatch2.network
 
 import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory

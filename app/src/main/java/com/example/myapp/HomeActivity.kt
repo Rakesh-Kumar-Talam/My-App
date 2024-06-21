@@ -12,6 +12,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.myapp.R.id.activity_ex
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import network.MarsApi
 
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,9 +25,9 @@ class HomeActivity : AppCompatActivity() {
             insets
         }
         var data = intent.extras?.getString("mykey")
-        Log.i("HomeActivity","data is " +data)
+        Log.i("HomeActivity", "data is " + data)
         //Log.i("homeactivity",data)
-        var homeTextView:TextView = findViewById(activity_ex)
+        var homeTextView: TextView = findViewById(activity_ex)
         //homeTextView.setText("data")
     }
 
@@ -35,6 +36,12 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun getMarsPhotos() {
-        GlobalScope.launch {}
+        GlobalScope.launch {
+            GlobalScope.launch {
+                val listResult = MarsApi.retrofitService.getPhotos()
+                Log.i("HomeActivity", listResult)
+
+            }
+        }
     }
 }
