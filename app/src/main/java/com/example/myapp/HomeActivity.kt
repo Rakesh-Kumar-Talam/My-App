@@ -3,12 +3,15 @@ package com.example.myapp
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.myapp.R.id.activity_ex
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,5 +28,13 @@ class HomeActivity : AppCompatActivity() {
         //Log.i("homeactivity",data)
         var homeTextView:TextView = findViewById(activity_ex)
         //homeTextView.setText("data")
+    }
+
+    fun getJson(view: View) {
+        getMarsPhotos()
+    }
+
+    private fun getMarsPhotos() {
+        GlobalScope.launch {}
     }
 }

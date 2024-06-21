@@ -11,8 +11,20 @@
         android:id="@+id/tvhome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="81dp"
+        android:layout_marginEnd="36dp"
         android:text="Home"
         android:textSize="120dp"
-        tools:layout_editor_absoluteX="52dp"
-        tools:layout_editor_absoluteY="81dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnGet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:onClick="getJson"
+        android:text="get json"
+        app:layout_constraintStart_toStartOf="@+id/tvhome"
+        app:layout_constraintTop_toBottomOf="@+id/tvhome" />
 </androidx.constraintlayout.widget.ConstraintLayout>
