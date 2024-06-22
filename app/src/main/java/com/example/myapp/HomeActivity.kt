@@ -12,6 +12,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapp.R.id.activity_ex
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -23,7 +24,7 @@ class HomeActivity : AppCompatActivity() {
 
     //lateinit var brake:Int?
     lateinit var recyclerview: RecyclerView
-    lateinit var listMarsPhotos:List<MarsPhoto>
+    lateinit var listMarsPhotos: List<MarsPhoto>
     lateinit var marsAdapter: MarsAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,14 +52,15 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun getMarsPhotos() {
-        GlobalScope.launch {
-            GlobalScope.async {
-                val listMarsPhoto = MarsApi.retrofitService.getPhotos()
-                listMarsPhotos = listMarsPhoto
-                marsAdapter.notifyItemRangeChanged(0,listMarsPhotos.size)
-                Log.i("HomeActivity-1st imgsrc",listMarsPhoto.get(0).imgSrc)
+        GlobalScope.launch (Dispatchers.Main){
+            //doing time taking tasks on the main thread is not advisable
+            val listMarsPhoto = MarsApi.retrofitService.getPhotos()
+            marsAdapter.listMarsPhotos = listMarsPhoto
+            marsAdapter.notifyItemRangeChanged(0,listMarsPhoto.size)
+            //  listMarsPhotos  = listMarsPhoto
+            //marsAdapter.notifyDataSetChanged()
+            Log.i("HomeActivity-1st imgsrc", listMarsPhoto.get(0).imgSrc)
 
-            }
         }
     }
 }
