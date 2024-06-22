@@ -28,13 +28,13 @@ class HomeActivity : AppCompatActivity() {
     lateinit var recyclerview: RecyclerView
     lateinit var listMarsPhotos: List<MarsPhoto>
     lateinit var marsAdapter: MarsAdapter
-    lateinit var imageView: ImageView
+    //lateinit var imageView: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_home)
         recyclerview = findViewById(R.id.recyclerView)
-        imageView = findViewById(R.id.imageView)
+       // imageView = findViewById(R.id.imageView)
         recyclerview.layoutManager = LinearLayoutManager(this)
         listMarsPhotos = ArrayList<MarsPhoto>()
         marsAdapter = MarsAdapter(listMarsPhotos)
@@ -60,7 +60,7 @@ class HomeActivity : AppCompatActivity() {
             //doing time taking tasks on the main thread is not advisable
             val listMarsPhoto = MarsApi.retrofitService.getPhotos()
             marsAdapter.listMarsPhotos = listMarsPhoto
-            imageView.load(listMarsPhoto.get(0).imgSrc)
+          //  imageView.load(listMarsPhoto.get(0).imgSrc)
             marsAdapter.notifyItemRangeChanged(0,listMarsPhoto.size)
             //  listMarsPhotos  = listMarsPhoto
             //marsAdapter.notifyDataSetChanged()
