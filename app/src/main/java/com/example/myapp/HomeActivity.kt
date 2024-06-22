@@ -9,16 +9,31 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myapp.R.id.activity_ex
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import network.MarsAdapter
 import network.MarsApi
+import network.MarsPhoto
 
 class HomeActivity : AppCompatActivity() {
+
+    //lateinit var brake:Int?
+    lateinit var recyclerview: RecyclerView
+    lateinit var listMarsPhotos:List<MarsPhoto>
+    lateinit var marsAdapter: MarsAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_home)
+        recyclerview = findViewById(R.id.recyclerView)
+        recyclerview.layoutManager = LinearLayoutManager(this)
+        listMarsPhotos = ArrayList<MarsPhoto>()
+        marsAdapter = MarsAdapter(listMarsPhotos)
+        recyclerview.adapter = marsAdapter
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -37,8 +52,10 @@ class HomeActivity : AppCompatActivity() {
 
     private fun getMarsPhotos() {
         GlobalScope.launch {
-            GlobalScope.launch {
+            GlobalScope.async {
                 val listMarsPhoto = MarsApi.retrofitService.getPhotos()
+                listMarsPhotos = listMarsPhoto
+                marsAdapter.notifyItemRangeChanged(0,listMarsPhotos.size)
                 Log.i("HomeActivity-1st imgsrc",listMarsPhoto.get(0).imgSrc)
 
             }
