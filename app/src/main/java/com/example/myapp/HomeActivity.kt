@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +12,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.myapp.R.id.activity_ex
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -26,11 +28,13 @@ class HomeActivity : AppCompatActivity() {
     lateinit var recyclerview: RecyclerView
     lateinit var listMarsPhotos: List<MarsPhoto>
     lateinit var marsAdapter: MarsAdapter
+    lateinit var imageView: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_home)
         recyclerview = findViewById(R.id.recyclerView)
+        imageView = findViewById(R.id.imageView)
         recyclerview.layoutManager = LinearLayoutManager(this)
         listMarsPhotos = ArrayList<MarsPhoto>()
         marsAdapter = MarsAdapter(listMarsPhotos)
@@ -56,6 +60,7 @@ class HomeActivity : AppCompatActivity() {
             //doing time taking tasks on the main thread is not advisable
             val listMarsPhoto = MarsApi.retrofitService.getPhotos()
             marsAdapter.listMarsPhotos = listMarsPhoto
+            imageView.load(listMarsPhoto.get(0).imgSrc)
             marsAdapter.notifyItemRangeChanged(0,listMarsPhoto.size)
             //  listMarsPhotos  = listMarsPhoto
             //marsAdapter.notifyDataSetChanged()
