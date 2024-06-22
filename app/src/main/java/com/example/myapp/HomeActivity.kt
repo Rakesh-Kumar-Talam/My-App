@@ -27,7 +27,7 @@ class HomeActivity : AppCompatActivity() {
         var data = intent.extras?.getString("mykey")
         Log.i("HomeActivity", "data is " + data)
         //Log.i("homeactivity",data)
-        var homeTextView: TextView = findViewById(activity_ex)
+        //jjvar homeTextView: TextView = findViewById(activity_ex)
         //homeTextView.setText("data")
     }
 
@@ -38,8 +38,8 @@ class HomeActivity : AppCompatActivity() {
     private fun getMarsPhotos() {
         GlobalScope.launch {
             GlobalScope.launch {
-                val listResult = MarsApi.retrofitService.getPhotos()
-                Log.i("HomeActivity", listResult)
+                val listMarsPhoto = MarsApi.retrofitService.getPhotos()
+                Log.i("HomeActivity-1st imgsrc",listMarsPhoto.get(0).imgSrc)
 
             }
         }
