@@ -4,6 +4,7 @@ package com.example.myapp
 import android.os.Bundle
 
 import android.view.View
+import android.widget.TextView
 
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +14,9 @@ import com.example.myapp.database.Item
 
 import com.example.myapp.database.ItemDao
 import com.example.myapp.database.ItemRoomDatabase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class HomeActivity : AppCompatActivity() {
@@ -21,6 +24,8 @@ class HomeActivity : AppCompatActivity() {
     // lateinit var binding:ActivityHomeBinding
 
     lateinit var dao: ItemDao
+    lateinit var tvhome: TextView
+    var count = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -33,12 +38,14 @@ class HomeActivity : AppCompatActivity() {
         // enableEdgeToEdge()
         setContentView(R.layout.activity_home)
         var database = ItemRoomDatabase.getDatabase(this)
+        tvhome = findViewById(R.id.tvhome)
         dao = database.itemDao()
+        tvhome.setText(""+ count)
     }
 
-    override fun onStart() {
-        super.onStart()
-    }
+//    override fun onStart() {
+//        super.onStart()
+//    }
 
     fun insertDb(view: View) {
 
@@ -48,6 +55,18 @@ class HomeActivity : AppCompatActivity() {
 
         }
 
+    }
+
+    fun findItemDb(view: View) {
+        GlobalScope.launch(Dispatchers.Main) {
+            val item = dao.getItem(777).first()
+            tvhome.setText(item.itemName)
+        }
+    }
+
+    fun incrementCount(view: View) {
+        count++
+        tvhome.setText(""+count)
     }
 }
 
