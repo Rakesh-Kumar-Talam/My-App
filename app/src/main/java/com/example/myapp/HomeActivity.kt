@@ -44,7 +44,7 @@ class HomeActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
-        tvhome.setText(""+viewModel.count)
+        //tvhome.setText(""+viewModel.count)
 
         dao = database.itemDao()
         //tvhome.setText(""+ count)
@@ -75,6 +75,9 @@ class HomeActivity : AppCompatActivity() {
         viewModel.incrementCount()
         //count++
         tvhome.setText(""+viewModel.count)
+
+        viewModel.startTimer()
+        tvhome.setText(""+viewModel._seconds)
     }
 }
 
