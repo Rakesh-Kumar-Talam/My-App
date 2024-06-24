@@ -10,6 +10,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
 import com.example.myapp.database.Item
 
 import com.example.myapp.database.ItemDao
@@ -25,7 +26,8 @@ class HomeActivity : AppCompatActivity() {
 
     lateinit var dao: ItemDao
     lateinit var tvhome: TextView
-    var count = 0
+    //var count = 0
+    lateinit var viewModel: HomeViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -39,8 +41,13 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         var database = ItemRoomDatabase.getDatabase(this)
         tvhome = findViewById(R.id.tvhome)
+
+        viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
+
+        tvhome.setText(""+viewModel.count)
+
         dao = database.itemDao()
-        tvhome.setText(""+ count)
+        //tvhome.setText(""+ count)
     }
 
 //    override fun onStart() {
@@ -65,8 +72,9 @@ class HomeActivity : AppCompatActivity() {
     }
 
     fun incrementCount(view: View) {
-        count++
-        tvhome.setText(""+count)
+        viewModel.incrementCount()
+        //count++
+        tvhome.setText(""+viewModel.count)
     }
 }
 
