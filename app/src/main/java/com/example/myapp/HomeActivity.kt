@@ -10,6 +10,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapp.database.Item
 
@@ -43,6 +44,7 @@ class HomeActivity : AppCompatActivity() {
         tvhome = findViewById(R.id.tvhome)
 
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
+        viewModel._seconds.observe(this, secsObserver);                 //like clicking the bell icon on youtube
 
         //tvhome.setText(""+viewModel.count)
 
@@ -72,12 +74,19 @@ class HomeActivity : AppCompatActivity() {
     }
 
     fun incrementCount(view: View) {
-        viewModel.incrementCount()
+        //viewModel.incrementCount()
         //count++
-        tvhome.setText(""+viewModel.count)
+        //tvhome.setText(""+viewModel.count)
 
         viewModel.startTimer()
-        tvhome.setText(""+viewModel._seconds)
+        //tvhome.setText(""+viewModel._seconds)
+    }
+
+    var secsObserver : Observer<Int> = object :Observer<Int>{
+        override fun onChanged(value: Int) {
+            //receiving the update/notification
+            tvhome.setText(value.toString())
+        }
     }
 }
 
