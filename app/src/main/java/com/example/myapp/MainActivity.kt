@@ -1,5 +1,6 @@
 package com.example.myapp
 
+import android.app.AlarmManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -8,6 +9,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.SystemClock
 import android.telephony.SmsManager
 import android.util.Log
 import android.view.View
@@ -114,13 +116,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun sendSms(view: View) {
-        /*val smsManager: SmsManager = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            this.getSystemService(SmsManager::class.java)
-        } else {
-            SmsManager.getDefault()
-       }*/
-        val smsManager:SmsManager = SmsManager.getDefault()
-        smsManager.sendTextMessage("9880979732",null,"happy day",null,null)
+        Log.i("HomeActivity","current system time in millis"+ SystemClock.elapsedRealtime())
+        val alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
+        var triggerTime = System.currentTimeMillis()+30*60   //set the date and time of your friennds birthday
+        //SystemClock.elapsedRealtime() + AlarmManager.INTERVAL_FIFTEEN_MINUTES
+
+        val intent = Intent(this, HomeActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+        val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+
+        //alarmManager.canScheduleExactAlarms()
+        alarmManager.set(AlarmManager.RTC,triggerTime,pendingIntent)
+
+        //  alarmManager.setRepeating(AlarmManager.RTC,triggerTime,24*60*60*1000,pendingIntent)
 
     }
 }
