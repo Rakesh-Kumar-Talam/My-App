@@ -73,6 +73,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:text="Welcome"
+        style="@style/myfontstyle"
         android:textSize="40sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

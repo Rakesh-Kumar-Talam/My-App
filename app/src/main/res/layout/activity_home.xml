@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:text="Home"
         android:textSize="120dp"
+        style="@style/myfontstyle"
         tools:layout_editor_absoluteX="52dp"
         tools:layout_editor_absoluteY="81dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
