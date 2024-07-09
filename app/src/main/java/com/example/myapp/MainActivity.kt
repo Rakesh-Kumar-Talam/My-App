@@ -114,12 +114,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun sendSms(view: View) {
-        val smsManager: SmsManager = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        /*val smsManager: SmsManager = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             this.getSystemService(SmsManager::class.java)
         } else {
             SmsManager.getDefault()
-        }
-        smsManager.sendTextMessage("5556",null,"happy day",null,null)
+       }*/
+        val smsManager:SmsManager = SmsManager.getDefault()
+        smsManager.sendTextMessage("9880979732",null,"happy day",null,null)
 
     }
 }
