@@ -8,6 +8,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.telephony.SmsManager
 import android.util.Log
 import android.view.View
 import androidx.activity.enableEdgeToEdge
@@ -110,5 +111,15 @@ class MainActivity : AppCompatActivity() {
                 getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
         }
+    }
+
+    fun sendSms(view: View) {
+        val smsManager: SmsManager = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            this.getSystemService(SmsManager::class.java)
+        } else {
+            SmsManager.getDefault()
+        }
+        smsManager.sendTextMessage("5556",null,"happy day",null,null)
+
     }
 }
